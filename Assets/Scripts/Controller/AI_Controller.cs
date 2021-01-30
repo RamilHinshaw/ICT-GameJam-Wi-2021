@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class test
+public class AI_Controller : MonoBehaviour
 {
-
-    ObjectPooler<testObject> testObj;
-
     // Start is called before the first frame update
     void Start()
     {
-        //Testing pool!
-
-
+        
     }
 
     // Update is called once per frame
