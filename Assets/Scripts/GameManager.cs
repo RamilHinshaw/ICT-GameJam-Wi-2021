@@ -31,17 +31,19 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-
     //Managers
     [Header("Managers")]
     public GuiManager guiManager;
 
     [Header("Database")]
     public CardDatabase cardDatabase;
+    //public ShipDatabase ship;
 
 
     [Header("General")]
-    //Selected Card
+    [HideInInspector] public Arena arena;
+    public List<Player> players;
+
     public int selectedCard;
 
     public enum GameMode
@@ -50,7 +52,6 @@ public class GameManager : MonoBehaviour
         Game,   //Normal Gameplay Loop
         Finished //Game has ended logic
     }
-
     public enum Phases
     {
         Start, //Switch to next ship, draw card
@@ -59,14 +60,52 @@ public class GameManager : MonoBehaviour
         TurnEnd, //Declaration that turn ended (Might be good for passives)        
     }
 
+    public GameMode mode;
+    public Phases phase;
+
     private void Start()
     {
-
+        arena.Init();
     }
 
     private void Update()
     {
+        switch (mode)
+        {
+            case GameMode.PlaceUnits:
+                //Place each unit, when all is placed give okay
 
+                //If player 1 & player 2 placed all units then move to game mode
+                break;
+            case GameMode.Game:
+
+                switch (phase)
+                {
+                    case Phases.Start:
+                        //Start the selected players turn based on ship speed
+                        break;
+                    case Phases.Combat:
+
+                        break;
+                    case Phases.CardEffect:
+
+                        break;
+                    case Phases.TurnEnd:
+
+                        break;
+                    default:
+                        break;
+                }
+
+
+                break;
+
+            case GameMode.Finished:
+                //Gameplay has finished!
+                break;
+            default:
+                break;
+        }
     }
 
     //Attack, move, etc from tile click
