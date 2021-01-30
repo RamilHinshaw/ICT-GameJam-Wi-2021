@@ -1,18 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class Ship : MonoBehaviour
+[Serializable]
+public class Ship
 {
-    // Start is called before the first frame update
-    void Start()
+    public string shipName;
+    public ShipClass shipClass;
+    public int health = 1;
+    public int speed = 1;
+    public int startFuel = 5;
+    private int fuel;
+
+    public enum ShipClass
     {
-        
+        Submarine,
+        Cruiser,
+        Battleship,
+        Destroyer,
+        Carrier
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
