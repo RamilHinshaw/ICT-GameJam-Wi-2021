@@ -8,6 +8,7 @@ public class Ship
 {
     public string shipName;
     public ShipClass shipClass;
+    [TextArea(15, 20)] public string description;
     public int health = 1;
     public int speed = 1;
     public int startFuel = 5;
