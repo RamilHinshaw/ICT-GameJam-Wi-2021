@@ -16,6 +16,8 @@ public class Card
 {
     public Texture img;
     public string name;
+    [TextArea(15, 20)] public string description;
+    public Color color = Color.white;
     public CardType type;
     public TargetType target;
     public bool reveal;
