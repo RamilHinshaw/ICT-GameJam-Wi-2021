@@ -61,8 +61,8 @@ public class GuiManager : MonoBehaviour
 
         switch (GameManager.Instance.phase)
         {
-            case GameManager.Phases.PlaceUnits:
-                PlaceUnitColors(coordinate);
+            case GameManager.Phases.PlaceShips:
+                PlaceShipColors(coordinate);
                 break;
 
             case GameManager.Phases.Action:
@@ -74,7 +74,7 @@ public class GuiManager : MonoBehaviour
         }        
     }
 
-    public void PlaceUnitColors(Vector2Int coordinate)
+    public void PlaceShipColors(Vector2Int coordinate)
     {
         //BASED ON SHIP ID INSTEAD!
         int cardID = GameManager.Instance.selectedCard;
