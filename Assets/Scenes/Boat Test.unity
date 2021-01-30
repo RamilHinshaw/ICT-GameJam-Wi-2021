@@ -54567,7 +54567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d60e9e6eb029f4ca317be6be244e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 1
+  cardID: 2
   cardName: {fileID: 1634643624}
   description: {fileID: 581566253}
   img: {fileID: 1794093096}
@@ -57281,7 +57281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d60e9e6eb029f4ca317be6be244e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 0
+  cardID: 3
   cardName: {fileID: 1396382389}
   description: {fileID: 562596920}
   img: {fileID: 1902617155}
