@@ -46,62 +46,40 @@ public class GameManager : MonoBehaviour
 
     public int selectedCard;
 
-    public enum GameMode
-    {
-        PlaceUnits, //Everyone Places their units and Okays it
-        Game,   //Normal Gameplay Loop
-        Finished //Game has ended logic
-    }
+    //public enum GameMode
+    //{
+    //    PlaceUnits, //Everyone Places their units and Okays it
+    //    Game,   //Normal Gameplay Loop
+    //    Finished //Game has ended logic
+    //}
     public enum Phases
     {
-        Start, //Switch to next ship, draw card
-        Combat, //Move & Attack
-        CardEffect,
+        PlaceUnits,
+        TurnStart, //Switch to next ship, draw card
+        Action, //Move & Attack
         TurnEnd, //Declaration that turn ended (Might be good for passives)        
     }
 
-    public GameMode mode;
-    public Phases phase;
+    //public GameMode mode;
+    public Phases phase = Phases.Action;
 
     private void Start()
     {
+        Arena arena = GetComponent<Arena>();
         arena.Init();
     }
 
     private void Update()
     {
-        switch (mode)
+        switch (phase)
         {
-            case GameMode.PlaceUnits:
-                //Place each unit, when all is placed give okay
-
-                //If player 1 & player 2 placed all units then move to game mode
+            case Phases.PlaceUnits:
                 break;
-            case GameMode.Game:
-
-                switch (phase)
-                {
-                    case Phases.Start:
-                        //Start the selected players turn based on ship speed
-                        break;
-                    case Phases.Combat:
-
-                        break;
-                    case Phases.CardEffect:
-
-                        break;
-                    case Phases.TurnEnd:
-
-                        break;
-                    default:
-                        break;
-                }
-
-
+            case Phases.TurnStart:
                 break;
-
-            case GameMode.Finished:
-                //Gameplay has finished!
+            case Phases.Action:
+                break;
+            case Phases.TurnEnd:
                 break;
             default:
                 break;
