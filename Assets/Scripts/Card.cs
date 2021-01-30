@@ -19,7 +19,9 @@ public class Card
     [TextArea(15, 20)] public string description;
     public Color color = Color.white;
     public CardType type;
+    public int power;   //Damage, heal
     public TargetType target;
+    public bool leaveObstacle;
     public bool reveal;
     public int energyCost = 0;
     public int additionalHits = 0;

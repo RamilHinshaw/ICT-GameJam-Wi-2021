@@ -5,7 +5,6 @@ namespace Battleship.Enum
         Movement,
         Attack,
         Heal,
-        Obstacle,
         Armor
     }
 }

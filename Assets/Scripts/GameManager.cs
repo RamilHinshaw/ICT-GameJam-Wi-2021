@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     //}
     public enum Phases
     {
-        PlaceUnits,
+        PlaceShips,
         TurnStart, //Switch to next ship, draw card
         Action, //Move & Attack
         TurnEnd, //Declaration that turn ended (Might be good for passives)        
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     {
         switch (phase)
         {
-            case Phases.PlaceUnits:
+            case Phases.PlaceShips:
                 break;
             case Phases.TurnStart:
                 break;
