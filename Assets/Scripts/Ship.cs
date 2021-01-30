@@ -7,7 +7,9 @@ using System;
 public class Ship
 {
     public string shipName;
+    public int shipModel;
     public ShipClass shipClass;
+    public List<Vector2Int> size = new List<Vector2Int>() { Vector2Int.zero };
     [TextArea(15, 20)] public string description;
     public int health = 1;
     public int speed = 1;
