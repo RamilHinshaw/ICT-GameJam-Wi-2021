@@ -18,6 +18,8 @@ public class Card
     public string name;
     [TextArea(15, 20)] public string description;
     public Color color = Color.white;
+    public AudioClip audioClip;
+    [Range(0.0f, 1.0f)] public float volume;
     public CardType type;
     public int power;   //Damage, heal
     public TargetType target;

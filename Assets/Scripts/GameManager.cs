@@ -83,8 +83,9 @@ public class GameManager : MonoBehaviour
         PlayerAction, //Move & Attack
         EnemyAction,
         AttackAnim,
-        HitAnimPrepare,
+        HitAnimBefore,
         HitAnim,
+        hitAnimAfter,
         Wait,
         Victory,
         NULL
@@ -172,17 +173,22 @@ public class GameManager : MonoBehaviour
 
                 guiManager.ShowGrid(false);
 
-                as_shoot.Play();
+                AudioClip sfx = cardDatabase.cards[selectedCard].audioClip;
+
+                as_shoot.volume = cardDatabase.cards[selectedCard].volume ;
+                as_shoot.PlayOneShot(sfx);
+
+
                 particle_shoot.Play();
 
                 //Pending
                 timer = 1f;
-                pendingPhase = Phases.HitAnimPrepare;
+                pendingPhase = Phases.HitAnimBefore;
                 phase = Phases.Wait;
 
                 break;
 
-            case Phases.HitAnimPrepare:
+            case Phases.HitAnimBefore:
                 //Check every anyship and see if it hit anything
                 //If so remember ship
                 //Play hit anim
