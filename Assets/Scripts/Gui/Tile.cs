@@ -35,7 +35,9 @@ public class Tile : MonoBehaviour, IPointerEnterHandler//, IPointerExitHandler
         //Finds Gui Manager
         //Updates cell colors!
         //img.color = Color.red;
-        GameManager.Instance.guiManager.ColorTiles(coordinate);
+
+        if (GameManager.Instance.currentPlayer == 0)
+            GameManager.Instance.guiManager.ColorTiles(coordinate);
 
         //print(coordinate);
     }

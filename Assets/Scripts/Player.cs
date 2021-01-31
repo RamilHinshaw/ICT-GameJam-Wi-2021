@@ -100,23 +100,20 @@ public class Player
         }
     }
 
-    public void DrawCard(int num = 1)
+    public void DrawCard()
     {
-        for (int i = 0; i < num; i++)
+        if (cardsInHand.Count >= 7)
         {
-            if (cardsInHand.Count >= 7)
-            {
-                Debug.Log("MAX CARDS REACHED!");
-                return;
-            }
-
-            if (cardsInDeck[deckCounter + i] >= cardsInDeck.Count)
-                deckCounter = 0;
-
-                cardsInHand.Add(cardsInDeck[deckCounter + i]);                
+            Debug.Log("MAX CARDS REACHED!");
+            return;
         }
 
-        deckCounter += num;
+        deckCounter++;
+
+        if (deckCounter >= cardsInDeck.Count)
+            deckCounter = 0;
+
+        cardsInHand.Add(cardsInDeck[deckCounter]);                
     }
 
     public List<int> AttackArea(List<Vector2Int> aoe)

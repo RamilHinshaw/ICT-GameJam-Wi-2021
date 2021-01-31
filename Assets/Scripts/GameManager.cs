@@ -99,7 +99,10 @@ public class GameManager : MonoBehaviour
         players.Add(new Player(Player2));
 
         //Player Give cards to player
-        players[0].DrawCard(7);
+
+        for (int i = 0; i < 7; i++)
+            players[0].DrawCard();
+
         guiManager.UpdateCardsInHand(players[0]);
 
         guiManager.ShowCards(false);
@@ -118,8 +121,10 @@ public class GameManager : MonoBehaviour
 
             case Phases.BeginTurn:
 
+                //Flip Player
                 currentPlayer = (currentPlayer == 0) ? 1 : 0;
 
+                guiManager.ClearTiles();
                 guiManager.ShowCards(true);
                 cam.SwitchModes(0);
                 players[0].NextShip();
@@ -128,40 +133,42 @@ public class GameManager : MonoBehaviour
                 //Switch Phase
 
                 //If next turn is ENEMY than hardcode for them to play :)
-                if (true)
+                if (currentPlayer == 0)
                 {
+                    cancelButton.gameObject.SetActive(true);
                     guiManager.text_helper.color = Color.yellow;
                     guiManager.text_helper.text = "";
                     phase = Phases.PlayerAction;
                 }
 
-                //else
-                //{
-                //    guiManager.text_helper.color = Color.red;
-                //    guiManager.text_helper.text = "Enemy's Turn";
-                //    guiManager.ShowCards(false);
-                //    guiManager.ShowGrid(false);
+                else
+                {
+                    guiManager.text_helper.color = Color.red;
+                    guiManager.text_helper.text = "Enemy's Turn";
+                    guiManager.ShowCards(false);
+                    guiManager.ShowGrid(false);
 
-                //    //Pending
-                //    timer = 2f;
-                //    pendingPhase = Phases.EnemyAction;
-                //    phase = Phases.Wait;
-                //}
+                    //Pending
+                    timer = 1.3f;
+                    pendingPhase = Phases.EnemyAction;
+                    phase = Phases.Wait;
+                }
 
 
                 break;
 
             case Phases.EnemyAction:
 
-                //Get
-
-
+                EnemyAction_Logic();
+                  
                 break;
 
             case Phases.AttackAnim:
                 //Play Fire Explosion Particle
                 //Play Fire Explosion Sfx
                 //Countdown Timer then switch to HitAnim!
+
+                guiManager.ShowGrid(false);
 
                 as_shoot.Play();
                 particle_shoot.Play();
@@ -177,8 +184,6 @@ public class GameManager : MonoBehaviour
                 //Check every anyship and see if it hit anything
                 //If so remember ship
                 //Play hit anim
-
-
 
                 shipsThatGotHit = players[enemyID].AttackArea(guiManager.lastColoredTiles);
                 print(shipsThatGotHit.Count + " ships were hit!");
@@ -217,7 +222,7 @@ public class GameManager : MonoBehaviour
                 as_hit.Play();
                 particle_hitBlack.Play();
                 particle_hitOrange.Play();
-                ToggleShip(players[enemyID].ships[shipsThatGotHit[shipsThatGotHitCounter]].shipClass);
+               
 
                 //CHANGE IF I WANT HEAL, MOVEMENT, OR OBSTACLES!
                 int damage = cardDatabase.cards[selectedCard].power;
@@ -265,6 +270,7 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     //ToggleShip(players[enemyID].ships[shipsThatGotHit[shipsThatGotHitCounter]].shipClass);
+                    ToggleShip(players[enemyID].ships[shipsThatGotHit[shipsThatGotHitCounter]].shipClass);
 
                     //Pending
                     timer = 1.4f;
@@ -354,9 +360,10 @@ public class GameManager : MonoBehaviour
 
                 break;
 
-            //On Card Click
+            //ON CARD CLICK
             case Phases.PlayerAction: 
-                //UIcard.gameObject.SetActive(false);
+                
+                //Clear then we update later
                 RemoveCardFromHand(UIcard);
 
                 //Add Hitmarker from attack from last time
@@ -552,6 +559,42 @@ public class GameManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void EnemyAction_Logic()
+    {
+        cam.SwitchModes(CameraController.CamModes.Attack);
+        guiManager.lastColoredTiles.Clear();
+
+        guiManager.ShowGrid(true);
+        guiManager.ShowPlayerShips(players[0], Color.green);
+
+        cancelButton.gameObject.SetActive(false);
+
+        //Get random card from deck
+        int cardIndex = Random.Range(0, players[1].cardsInDeck.Count - 1);
+        selectedCard = players[1].cardsInDeck[cardIndex];
+
+
+        int rotateMode = Random.Range(0, 3);
+        int xPos = Random.Range(0, 19);
+        int yPos = Random.Range(0, 19);
+
+
+        //players[1].AddPlayerAttackMarker(guiManager.lastColoredTiles);
+
+        Card card = cardDatabase.cards[selectedCard];
+  
+
+        Vector2Int coordinate = new Vector2Int(xPos, yPos);
+        guiManager.ActionColors(coordinate, rotateMode); //Updates lastColoredTiles to be used to attack here later!
+
+
+        //PENDING
+        timer = 1.35f;
+        pendingPhase = Phases.AttackAnim;
+        phase = Phases.Wait;
+        
     }
 
     private void AttackAnim_Logic()

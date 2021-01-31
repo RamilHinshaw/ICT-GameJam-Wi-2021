@@ -27,6 +27,7 @@ public class GuiManager : MonoBehaviour
     public Text text_Victory;
     public Text text_helper;
     //public GameObject ui_Cards;
+    public Color attackMarkerColor;
 
     public List<UICard> cardsInHand = new List<UICard>();
 
@@ -64,6 +65,7 @@ public class GuiManager : MonoBehaviour
     public void ShowGrid(bool val = true)
     {
         ui_Grid.SetActive(val);
+        ClearTiles();
         //ui_Cards.SetActive(false);
     }
 
@@ -88,7 +90,7 @@ public class GuiManager : MonoBehaviour
                 if (lastPlayer != null)
                 {
                     ShowPlayerShips(lastPlayer, Color.green);
-                    ShowPlayerAttackMarkers(lastPlayer, Color.black);
+                    ShowPlayerAttackMarkers(lastPlayer, attackMarkerColor);
                 }
                 
                 PlaceShipColors(coordinate);
@@ -97,7 +99,7 @@ public class GuiManager : MonoBehaviour
             case GameManager.Phases.PlayerAction:
                 if (lastPlayer != null)
                 {
-                    ShowPlayerAttackMarkers(lastPlayer, Color.black);
+                    ShowPlayerAttackMarkers(lastPlayer, attackMarkerColor);
                 }
 
 
@@ -181,11 +183,14 @@ public class GuiManager : MonoBehaviour
         
     }
 
-    public void ActionColors(Vector2Int coordinate)
+    public void ActionColors(Vector2Int coordinate, int rotMode = -1)
     {
         //Colors based on selected card
         int cardID = GameManager.Instance.selectedCard;
         Card card = GameManager.Instance.cardDatabase.cards[cardID];
+
+        if (rotMode != -1)
+            rotateMode = rotMode;
 
         for (int i = 0; i < card.aoe.Count; i++)
         {
@@ -284,15 +289,6 @@ public class GuiManager : MonoBehaviour
 
     public void ShowPlayerAttackMarkers(Player player, Color color)
     {
-        //Battleship.Grid attackGrid = player.enemyViewGrid;
-
-        //for (int i = 0; i < attackGrid.grid.GetLength(0); i++)
-        //    for (int j = 0; j < attackGrid.grid.GetLength(1); j++)
-        //    {
-        //        if (attackGrid.grid[i, j] == true)
-        //            grid[i, j].img.color = color;                
-        //    }
-
         var attackGrid = player.attackGrid;
         for (int i = 0; i < attackGrid.Count; i++)
         {
