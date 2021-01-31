@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
     public int currentPlayer = 0;
     public int selectedCard;
     public UICard UIcard;
+
+    public GameObject btn_replay, btn_exit;
     
 
     
@@ -300,6 +302,9 @@ public class GameManager : MonoBehaviour
 
                 guiManager.text_Victory.text = "PLAYER " + (currentPlayer + 1).ToString() + " WINS!";
                  guiManager.text_Victory.gameObject.SetActive(true);
+
+                btn_replay.SetActive(true);
+                btn_exit.SetActive(true);
 
                 phase = Phases.NULL;
 
