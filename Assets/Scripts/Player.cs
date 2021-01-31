@@ -75,7 +75,12 @@ public class Player
         if (selectedShip > ships.Count)
             return true;
 
-        ships[shipIndex].hitboxLocations = hitboxes;
+        ships[shipIndex].hitboxLocations = new List<Vector2Int>();
+
+        for (int i = 0; i < hitboxes.Count; i++)
+            ships[shipIndex].hitboxLocations.Add(hitboxes[i]);
+
+
         selectedShip++;
 
 

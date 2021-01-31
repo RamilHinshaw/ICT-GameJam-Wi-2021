@@ -140,7 +140,7 @@ public class GuiManager : MonoBehaviour
             lastColoredTiles.Add( new Vector2Int(takenSpaceOffset.x, takenSpaceOffset.y));
         }
 
-        //CHANGE!
+        //If not colliding with anything or out of bounds then it is legal!
         legal = true;
     }
 
@@ -189,7 +189,7 @@ public class GuiManager : MonoBehaviour
     {
         for (int i = 0; i < GRID_SIZE_X; i++)
             for (int j = 0; j < GRID_SIZE_Y; j++)
-                grid[i, j].img.color = Color.white;
+                grid[i, j].img.color = new Color(1,1,1,0.45f);
     }
 
     public void UpdateTiles(Battleship.Grid playerGrid, Color color)

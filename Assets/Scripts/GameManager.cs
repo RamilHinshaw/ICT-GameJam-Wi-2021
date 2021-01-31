@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     [Header("General")]
     //[HideInInspector] public Arena arena;
     public List<Player> players = new List<Player>();
+    public CameraController cam;
 
     [Header("Data")]
     public PlayerData Player1;
@@ -142,13 +143,15 @@ public class GameManager : MonoBehaviour
                 break;
             case Phases.TurnStart:
                 break;
-            case Phases.Action:
+
+            case Phases.Action: //On Card Click
                 //UIcard.gameObject.SetActive(false);
                 RemoveCardFromHand(UIcard);
                 players[0].DrawCard();
 
                 guiManager.UpdateCardsInHand(players[0]);
 
+                SwitchCameraMode(0);
                 guiManager.ClearTiles();
                 guiManager.ShowCards();
                 break;
@@ -189,6 +192,16 @@ public class GameManager : MonoBehaviour
         print("TEST!");
     }
 
+
+    public void SwitchCameraMode(int mode)
+    {
+        cam.SwitchModes(CameraController.CamModes.Ship);
+
+        if (mode == 1)
+            cam.SwitchModes(CameraController.CamModes.Attack);
+        else if (mode == 2)
+            cam.SwitchModes(CameraController.CamModes.Hit);
+    }
 
 
 }

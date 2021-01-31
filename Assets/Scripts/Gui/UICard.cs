@@ -16,6 +16,7 @@ public class UICard : MonoBehaviour
     {
         GameManager.Instance.SelectCard(cardID);
         GameManager.Instance.UIcard = this;
+        GameManager.Instance.SwitchCameraMode(1);
     }
 
     public void UpdateCard(int passedCardID)
