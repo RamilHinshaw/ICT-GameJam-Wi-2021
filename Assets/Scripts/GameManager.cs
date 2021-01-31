@@ -190,6 +190,7 @@ public class GameManager : MonoBehaviour
                 as_hit.Play();
                 particle_hitBlack.Play();
                 particle_hitOrange.Play();
+                ToggleShip(players[enemyID].ships[shipsThatGotHit[shipsThatGotHitCounter]].shipClass);
 
                 //CHANGE IF I WANT HEAL, MOVEMENT, OR OBSTACLES!
                 int damage = cardDatabase.cards[selectedCard].power;
@@ -236,7 +237,7 @@ public class GameManager : MonoBehaviour
                 //Do next boat
                 else
                 {
-                    ToggleShip(players[enemyID].ships[shipsThatGotHit[shipsThatGotHitCounter]].shipClass);
+                    //ToggleShip(players[enemyID].ships[shipsThatGotHit[shipsThatGotHitCounter]].shipClass);
 
                     //Pending
                     timer = 1.4f;

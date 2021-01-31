@@ -16743,7 +16743,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1996d8c5e93e4b14d9e7b2c2163860b0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ee55cad7d34f9e846a7c124ec6d82e4c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -18568,7 +18568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &621604182
 RectTransform:
   m_ObjectHideFlags: 0
@@ -50243,6 +50243,7 @@ MonoBehaviour:
     cardsInHand: 
   ui_Grid: {fileID: 421918620}
   ui_Cards: {fileID: 1914050449}
+  text_Victory: {fileID: 621604183}
   cardsInHand:
   - {fileID: 1902617158}
   - {fileID: 1794093094}
