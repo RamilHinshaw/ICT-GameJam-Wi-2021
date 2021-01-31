@@ -116,7 +116,9 @@ public class GameManager : MonoBehaviour
             case Phases.PlaceShips:
                 break;
 
-            case Phases.BeginTurn:                
+            case Phases.BeginTurn:
+
+                currentPlayer = (currentPlayer == 0) ? 1 : 0;
 
                 guiManager.ShowCards(true);
                 cam.SwitchModes(0);
@@ -126,7 +128,32 @@ public class GameManager : MonoBehaviour
                 //Switch Phase
 
                 //If next turn is ENEMY than hardcode for them to play :)
-                phase = Phases.PlayerAction;                
+                if (true)
+                {
+                    guiManager.text_helper.color = Color.yellow;
+                    guiManager.text_helper.text = "";
+                    phase = Phases.PlayerAction;
+                }
+
+                //else
+                //{
+                //    guiManager.text_helper.color = Color.red;
+                //    guiManager.text_helper.text = "Enemy's Turn";
+                //    guiManager.ShowCards(false);
+                //    guiManager.ShowGrid(false);
+
+                //    //Pending
+                //    timer = 2f;
+                //    pendingPhase = Phases.EnemyAction;
+                //    phase = Phases.Wait;
+                //}
+
+
+                break;
+
+            case Phases.EnemyAction:
+
+                //Get
 
 
                 break;
@@ -312,6 +339,8 @@ public class GameManager : MonoBehaviour
 
                         //Show appropriate SHIP
                         ToggleShip(players[0].ships[players[0].selectedShip].shipClass);
+
+                        guiManager.text_helper.text = "";
                         
                         return;
                     }

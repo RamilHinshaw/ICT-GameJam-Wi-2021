@@ -25,6 +25,7 @@ public class GuiManager : MonoBehaviour
     public GameObject ui_Grid;
     public GameObject ui_Cards;
     public Text text_Victory;
+    public Text text_helper;
     //public GameObject ui_Cards;
 
     public List<UICard> cardsInHand = new List<UICard>();
