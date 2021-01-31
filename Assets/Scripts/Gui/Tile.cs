@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class Tile : MonoBehaviour, IPointerEnterHandler//, IPointerExitHandler
 {
     public Vector2Int coordinate;
     [HideInInspector] public RawImage img;
@@ -22,11 +22,13 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
 
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        //img.color = Color.white;
-        GameManager.Instance.guiManager.ClearTiles();
-    }
+    //public void OnPointerExit(PointerEventData eventData)
+    //{
+    //    //img.color = Color.white;
+
+    //    if (GameManager.Instance.phase == GameManager.Phases.Action)
+    //        GameManager.Instance.guiManager.ClearTiles();
+    //}
 
     public void OnPointerEnter(PointerEventData eventData)
     {

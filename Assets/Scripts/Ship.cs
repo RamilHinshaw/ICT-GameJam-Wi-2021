@@ -14,7 +14,14 @@ public class Ship
     public int health = 1;
     public int speed = 1;
     public int startFuel = 5;
+
+    //USED FOR BATTLE
     private int fuel;
+    public List<Vector2Int> hitboxLocations = new List<Vector2Int>();
+    [HideInInspector] public Vector2Int originPoint;
+    [HideInInspector] public int rotateMode;
+
+    //public Ship(string name, int model, ShipClass)
 
     public enum ShipClass
     {
