@@ -56096,7 +56096,7 @@ MonoBehaviour:
   players: []
   cam: {fileID: 534669907}
   cancelButton: {fileID: 1384765708}
-  Player1: {fileID: 11400000, guid: 9b10feeb6b63ba04aab14b331a92c784, type: 2}
+  Player1: {fileID: 11400000, guid: 600f39fdcc853ba47bcef994365f0418, type: 2}
   npcPlayer2: 1
   Player2: {fileID: 11400000, guid: d33ab21e59c5ed64d8c17c3f71464e04, type: 2}
   currentPlayer: 0
