@@ -18,6 +18,7 @@ public class GuiManager : MonoBehaviour
 
     public Vector2Int lastCoordinate;
     public List<Vector2Int> lastColoredTiles = new List<Vector2Int>();
+
     public Player lastPlayer;
 
 
@@ -104,6 +105,7 @@ public class GuiManager : MonoBehaviour
                 if (lastPlayer != null)
                 {
                     ShowPlayerAttackMarkers(lastPlayer, attackMarkerColor);
+                    ShowPlayerMostRecentMarker();
                 }
 
 
@@ -185,6 +187,14 @@ public class GuiManager : MonoBehaviour
 
         //If not colliding with anything or out of bounds then it is legal!
         
+    }
+
+    public void ColorTiles(List<Vector2Int> hits, Color color)
+    {
+        for (int i = 0; i < hits.Count; i++)
+        {
+            grid[hits[i].x, hits[i].y].img.color = color;
+        }
     }
 
     public void ActionColors(Vector2Int coordinate, int rotMode = -1)
@@ -298,6 +308,11 @@ public class GuiManager : MonoBehaviour
         {
             grid[attackGrid[i].x, attackGrid[i].y].img.color = color;
         }
+    }
+
+    public void ShowPlayerMostRecentMarker()
+    {
+        ColorTiles(GameManager.Instance.lastPlayer1Shot, new Color(1.0f, 0.64f, 0.0f));
     }
 
     public List<Vector2Int> GetLastCoordinate()
