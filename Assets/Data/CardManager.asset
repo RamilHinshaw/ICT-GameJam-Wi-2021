@@ -137,3 +137,74 @@ MonoBehaviour:
     - {x: -1, y: -1}
     - {x: 1, y: -1}
     - {x: -1, y: 1}
+  - img: {fileID: 2800000, guid: 57451c1178e0afa4586c3dd37a447168, type: 3}
+    name: Ushaped volley
+    description: Ushaped
+    color: {r: 1, g: 1, b: 1, a: 0}
+    type: 1
+    power: 1
+    target: 1
+    leaveObstacle: 0
+    reveal: 0
+    energyCost: 0
+    additionalHits: 0
+    aoe:
+    - {x: 0, y: 0}
+    - {x: 1, y: 1}
+    - {x: 1, y: -1}
+    - {x: 2, y: -2}
+    - {x: 2, y: 2}
+  - img: {fileID: 2800000, guid: 57451c1178e0afa4586c3dd37a447168, type: 3}
+    name: Strait line 10
+    description: Straitline 10
+    color: {r: 1, g: 1, b: 1, a: 0}
+    type: 1
+    power: 1
+    target: 1
+    leaveObstacle: 0
+    reveal: 0
+    energyCost: 0
+    additionalHits: 0
+    aoe:
+    - {x: 0, y: 0}
+    - {x: 0, y: 2}
+    - {x: 0, y: 4}
+    - {x: 0, y: 6}
+    - {x: 0, y: 8}
+    - {x: 0, y: 10}
+    - {x: 0, y: 12}
+    - {x: 0, y: 14}
+  - img: {fileID: 2800000, guid: 57451c1178e0afa4586c3dd37a447168, type: 3}
+    name: Strait Scattered
+    description: Straitline 5 hits scattered
+    color: {r: 1, g: 1, b: 1, a: 0}
+    type: 1
+    power: 1
+    target: 1
+    leaveObstacle: 0
+    reveal: 0
+    energyCost: 0
+    additionalHits: 0
+    aoe:
+    - {x: 0, y: 0}
+    - {x: 0, y: 2}
+    - {x: 0, y: 4}
+    - {x: 0, y: 6}
+    - {x: 0, y: 8}
+  - img: {fileID: 2800000, guid: 57451c1178e0afa4586c3dd37a447168, type: 3}
+    name: Box
+    description: Box
+    color: {r: 1, g: 1, b: 1, a: 0}
+    type: 1
+    power: 1
+    target: 1
+    leaveObstacle: 0
+    reveal: 0
+    energyCost: 0
+    additionalHits: 0
+    aoe:
+    - {x: 0, y: 0}
+    - {x: 1, y: 1}
+    - {x: 2, y: 2}
+    - {x: 3, y: 3}
+    - {x: 4, y: 4}
