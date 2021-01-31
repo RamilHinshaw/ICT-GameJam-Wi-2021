@@ -35520,7 +35520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1186254319
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35548,7 +35548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -10.569946, y: 207}
+  m_AnchoredPosition: {x: -10.569824, y: 207}
   m_SizeDelta: {x: 247.1416, y: 613.4515}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1186254320
@@ -52190,6 +52190,8 @@ MonoBehaviour:
   - {fileID: 1319389080}
   - {fileID: 1827096633}
   - {fileID: 611750289}
+  player1HealthPanel: {fileID: 1186254318}
+  player2HealthPanel: {fileID: 1837783600}
   player1Health:
   - {fileID: 241147967}
   - {fileID: 1348840526}
@@ -55594,7 +55596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1837783601
 RectTransform:
   m_ObjectHideFlags: 0
@@ -57775,6 +57777,7 @@ MonoBehaviour:
   particle_shoot: {fileID: 467337545}
   particle_hitBlack: {fileID: 1273919716}
   particle_hitOrange: {fileID: 464653758}
+  lastPlayer1Shot: []
   phase: 0
 --- !u!4 &1907705172
 Transform:
@@ -57802,9 +57805,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491c52a4c4c309042b76881f9087472e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipKey: 0
+  skipKey: 27
   restartScene: 0
-  goToScene: 
+  goToScene: Main Menu
   OnLoad:
     m_PersistentCalls:
       m_Calls: []

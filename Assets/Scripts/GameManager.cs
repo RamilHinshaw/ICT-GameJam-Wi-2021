@@ -75,6 +75,8 @@ public class GameManager : MonoBehaviour
     private List<int> shipsThatGotHit = new List<int>();
     private int shipsThatGotHitCounter;
 
+    public List<Vector2Int> lastPlayer1Shot;
+
 
     public enum Phases
     {
@@ -365,7 +367,7 @@ public class GameManager : MonoBehaviour
                         //SHOW HEALTH AND UPDATE
                         guiManager.UpdatePlayerHealths();
                         guiManager.player1HealthPanel.SetActive(true);
-                        guiManager.player1HealthPanel.SetActive(true);
+                        guiManager.player2HealthPanel.SetActive(true);
 
                         return;
                     }
@@ -386,6 +388,13 @@ public class GameManager : MonoBehaviour
                 RemoveCardFromHand(UIcard);
 
                 //Add Hitmarker from attack from last time
+                lastPlayer1Shot.Clear();
+                for (int i = 0; i < guiManager.lastColoredTiles.Count; i++)
+                {
+                    lastPlayer1Shot.Add(guiManager.lastColoredTiles[i]);
+                }
+
+
                 players[0].AddPlayerAttackMarker(guiManager.lastColoredTiles);
 
                 players[0].DrawCard();
@@ -610,7 +619,7 @@ public class GameManager : MonoBehaviour
 
 
         //PENDING
-        timer = 1.35f;
+        timer = 1.55f;
         pendingPhase = Phases.AttackAnim;
         phase = Phases.Wait;
         

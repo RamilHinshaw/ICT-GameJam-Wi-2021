@@ -23,6 +23,7 @@ public class UICard : MonoBehaviour
         int playerID =  GameManager.Instance.currentPlayer;
         Player player = GameManager.Instance.players[playerID];
         GameManager.Instance.guiManager.ShowPlayerAttackMarkers(player, Color.black);
+        GameManager.Instance.guiManager.ShowPlayerMostRecentMarker();
     }
 
     public void UpdateCard(int passedCardID)
