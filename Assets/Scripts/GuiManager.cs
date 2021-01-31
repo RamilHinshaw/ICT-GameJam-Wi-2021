@@ -31,6 +31,10 @@ public class GuiManager : MonoBehaviour
 
     public List<UICard> cardsInHand = new List<UICard>();
 
+    public GameObject player1HealthPanel, player2HealthPanel;
+    public List<Text> player1Health = new List<Text>();
+    public List<Text> player2Health = new List<Text>();
+
     public void Update()
     {
         if (ui_Grid.activeSelf == true)
@@ -318,6 +322,18 @@ public class GuiManager : MonoBehaviour
         {
             cardsInHand[i].UpdateCard(player.cardsInHand[i]);
             cardsInHand[i].gameObject.SetActive(true);
+        }
+    }
+
+    public void UpdatePlayerHealths()
+    {
+        Player player1 = GameManager.Instance.players[0];
+        Player player2 = GameManager.Instance.players[1];
+
+        for (int i = 0; i < 5; i++)
+        {
+            player1Health[i].text = player1.ships[i].health.ToString();
+            player2Health[i].text = player2.ships[i].health.ToString();
         }
     }
 

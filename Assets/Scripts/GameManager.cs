@@ -110,6 +110,8 @@ public class GameManager : MonoBehaviour
 
         guiManager.ShowCards(false);
         guiManager.ShowGrid(true);
+
+        
     }
 
     private void Update()
@@ -230,6 +232,7 @@ public class GameManager : MonoBehaviour
                 as_hit.Play();
                 particle_hitBlack.Play();
                 particle_hitOrange.Play();
+                guiManager.UpdatePlayerHealths();
                
 
                 //CHANGE IF I WANT HEAL, MOVEMENT, OR OBSTACLES!
@@ -358,7 +361,12 @@ public class GameManager : MonoBehaviour
                         ToggleShip(players[0].ships[players[0].selectedShip].shipClass);
 
                         guiManager.text_helper.text = "";
-                        
+
+                        //SHOW HEALTH AND UPDATE
+                        guiManager.UpdatePlayerHealths();
+                        guiManager.player1HealthPanel.SetActive(true);
+                        guiManager.player1HealthPanel.SetActive(true);
+
                         return;
                     }
 
