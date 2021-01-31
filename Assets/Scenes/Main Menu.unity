@@ -3038,7 +3038,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lost At Sea
+  m_Text: Lost at Sea
 --- !u!222 &1123589631
 CanvasRenderer:
   m_ObjectHideFlags: 0
