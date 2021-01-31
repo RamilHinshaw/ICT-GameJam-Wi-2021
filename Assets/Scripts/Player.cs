@@ -122,6 +122,9 @@ public class Player
 
         for (int i = 0; i < ships.Count; i++)
         {
+            if (ships[i].health <= 0)
+                continue;
+
             for (int j = 0; j < ships[i].hitboxLocations.Count; j++)
             {
                 for (int k = 0; k < aoe.Count; k++)
@@ -150,6 +153,17 @@ public class Player
     public void DamageShip(int shipIndex, int dmg)
     {
         ships[shipIndex].health -= dmg;
+    }
+
+    public bool AllDead()
+    {
+        for (int i = 0; i < ships.Count; i++)
+        {
+            if (ships[i].health > 0)
+                return false;
+        }
+
+        return true;
     }
 
 

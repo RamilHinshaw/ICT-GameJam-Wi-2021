@@ -2964,17 +2964,23 @@ MonoBehaviour:
     similar to the game battleship except with the use of playing cards.
 
 
+    You
+    don''t need to fire at each segment of the ship but instead must fire at the
+    enemy''s ships multiple times to decrease the health.
+
+
+    Orange line on the
+    grid shows you previous shot as the dark red are shots taken further in the past.
+
 
     You
-    don''t need to fire at each segment of the ship but instead must fire at it multiple
-    times to decrease the health.
-
+    win if you take out all your opponent''s ships.
 
 
     Controls:
 
-    R: Rotate your selection
-    on the grid menu
+    R: Rotate
+    your selection on the grid menu
 
     Mouse: To select your cards
 

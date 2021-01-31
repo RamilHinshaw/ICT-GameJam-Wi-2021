@@ -246,12 +246,13 @@ public class GameManager : MonoBehaviour
 
                 if (players[enemyID].ships[shipsThatGotHit[shipsThatGotHitCounter]].health <= 0)
                 {
-                    players[enemyID].ships.RemoveAt(shipsThatGotHit[shipsThatGotHitCounter]);
+                    //players[enemyID].ships.RemoveAt(shipsThatGotHit[shipsThatGotHitCounter]);
                     
                     ClearShips();
 
                     //CHECK IF PLAYER WON!
-                    if (players[enemyID].ships.Count == 0)
+                    //if (players[enemyID].ships.Count == 0)
+                    if (players[enemyID].AllDead())
                     {
                         print("ALL SHIPS DESTROYED!");
 
