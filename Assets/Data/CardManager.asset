@@ -20,6 +20,8 @@ MonoBehaviour:
 
 '
     color: {r: 0, g: 0, b: 0, a: 0}
+    audioClip: {fileID: 8300000, guid: f59fc704521b95e44aa218c31b03f625, type: 3}
+    volume: 1
     type: 1
     power: 1
     target: 0
@@ -33,14 +35,13 @@ MonoBehaviour:
     - {x: -1, y: 1}
     - {x: 1, y: -1}
     - {x: -1, y: -1}
-  - img: {fileID: 2800000, guid: ea693041be145ff4d989194c110ac858, type: 3}
+  - img: {fileID: 2800000, guid: 56d290d70b04180488982d902a7c18af, type: 3}
     name: Airstrike
-    description: 'Attack target square expanding three square in one direction horizontally
-      or vertically. Any ships in the targeted space take 1 damage per attacked squares
-      occupied.
-
-'
+    description: Attack target square expanding four squares in one direction horizontally
+      or vertically. Any ships in the targeted space take 1 damage.
     color: {r: 0, g: 0, b: 0, a: 0}
+    audioClip: {fileID: 8300000, guid: 4878a0ff2eee692449ee76e21e9c38e3, type: 3}
+    volume: 1
     type: 1
     power: 1
     target: 0
@@ -54,11 +55,15 @@ MonoBehaviour:
     - {x: 2, y: 0}
     - {x: 3, y: 0}
     - {x: 4, y: 0}
-  - img: {fileID: 2800000, guid: b223ab07df4c65d47ac228fab3f1b64b, type: 3}
+  - img: {fileID: 2800000, guid: 3770c7f467f14dc448e30c8748c0a4d2, type: 3}
     name: Rail Gun
-    description: Attack target square expanding two squares in any diagonal.Any ships
-      in the affected area take 1 damage per attacked square they are occupying.
+    description: 'Attack target square expanding Three squares in any diagonal.Any
+      ships in the affected area take 1 damage.
+
+'
     color: {r: 1, g: 1, b: 1, a: 0}
+    audioClip: {fileID: 8300000, guid: 9142bb7bbcb4d0d4b97fe6981a6fc000, type: 3}
+    volume: 1
     type: 1
     power: 1
     target: 0
@@ -71,13 +76,16 @@ MonoBehaviour:
     - {x: 1, y: 1}
     - {x: 2, y: 2}
     - {x: 3, y: 3}
-  - img: {fileID: 2800000, guid: bb0e3b9a4ccd7e146a8dc424f06324c8, type: 3}
+    - {x: 4, y: 4}
+  - img: {fileID: 2800000, guid: 897bc3142290cb94caa7fd8dfa4614e4, type: 3}
     name: Torpedo
-    description: 'Attack target square expanding one square vertically and one horizontally.
-      Any ships in the affected area take 1 damage per attacked square they are occupying.
+    description: 'Attack target square expanding two squares vertically and two horizontally.
+      Any ships in the affected area take 1 damage.
 
 '
     color: {r: 1, g: 1, b: 1, a: 0}
+    audioClip: {fileID: 8300000, guid: 4878a0ff2eee692449ee76e21e9c38e3, type: 3}
+    volume: 1
     type: 1
     power: 1
     target: 0
@@ -97,6 +105,8 @@ MonoBehaviour:
       space. Any ships that end their turn in the targeted square, or move through
       the targeted square take 1 damage. '
     color: {r: 1, g: 1, b: 1, a: 0}
+    audioClip: {fileID: 0}
+    volume: 0
     type: 1
     power: 1
     target: 0
@@ -110,6 +120,8 @@ MonoBehaviour:
     name: Movement
     description: 
     color: {r: 1, g: 1, b: 1, a: 0}
+    audioClip: {fileID: 0}
+    volume: 0
     type: 0
     power: 0
     target: 1
@@ -124,6 +136,8 @@ MonoBehaviour:
 
       Devs only!'
     color: {r: 1, g: 1, b: 1, a: 0}
+    audioClip: {fileID: 0}
+    volume: 0
     type: 0
     power: 1
     target: 1
@@ -141,10 +155,15 @@ MonoBehaviour:
     - {x: -1, y: -1}
     - {x: 1, y: -1}
     - {x: -1, y: 1}
-  - img: {fileID: 2800000, guid: 57451c1178e0afa4586c3dd37a447168, type: 3}
-    name: Ushaped volley
-    description: Ushaped
+  - img: {fileID: 2800000, guid: 08a8728dd583c1b488e238930eebca11, type: 3}
+    name: Rocket Volley
+    description: 'Attack target square expanding two squares on the diagonal creating
+      a v shape. Any ships in the affected area take 1 damage.
+
+'
     color: {r: 1, g: 1, b: 1, a: 0}
+    audioClip: {fileID: 8300000, guid: ce4ecabc6b67b464db9dd0bab8e223d3, type: 3}
+    volume: 1
     type: 1
     power: 1
     target: 1
@@ -162,6 +181,8 @@ MonoBehaviour:
     name: DONT use
     description: Straitline 10
     color: {r: 1, g: 1, b: 1, a: 0}
+    audioClip: {fileID: 0}
+    volume: 0
     type: 1
     power: 1
     target: 1
@@ -182,6 +203,8 @@ MonoBehaviour:
     name: Dont use
     description: Straitline 5 hits scattered
     color: {r: 1, g: 1, b: 1, a: 0}
+    audioClip: {fileID: 0}
+    volume: 0
     type: 1
     power: 1
     target: 1
@@ -195,10 +218,16 @@ MonoBehaviour:
     - {x: 0, y: 4}
     - {x: 0, y: 6}
     - {x: 0, y: 8}
-  - img: {fileID: 2800000, guid: 57451c1178e0afa4586c3dd37a447168, type: 3}
-    name: Cross
-    description: Cross
+  - img: {fileID: 2800000, guid: 54c0a1ad7c5d0484d89115c628153b11, type: 3}
+    name: Bomb
+    description: 'Attack target square expanding one vertically on each side and
+      one square horizontally on each side. Any ships in the affected area take 1
+      damage.
+
+'
     color: {r: 1, g: 1, b: 1, a: 0}
+    audioClip: {fileID: 8300000, guid: ce4ecabc6b67b464db9dd0bab8e223d3, type: 3}
+    volume: 1
     type: 1
     power: 1
     target: 1
