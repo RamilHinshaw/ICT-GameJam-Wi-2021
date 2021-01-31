@@ -19,8 +19,8 @@ public class CameraController : MonoBehaviour
 
 
     public Vector3 offset;
-    public float rotSpeed = 3f;
-    public float lerpSpeed = 9f;
+    private float rotSpeed = 2.5f;
+    private float lerpSpeed = 2.5f;
 
     // Update is called once per frame
     void LateUpdate()
@@ -48,6 +48,15 @@ public class CameraController : MonoBehaviour
 
     public void SwitchModes(CamModes mode)
     {
+        rotSpeed = 2.5f;
+        lerpSpeed = 2.5f;
+        this.mode = mode;
+    }
+
+    public void SwitchModesFast(CamModes mode)
+    {
+        rotSpeed = 999f;
+        lerpSpeed = 999f;
         this.mode = mode;
     }
 }

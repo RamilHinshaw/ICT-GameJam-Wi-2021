@@ -14,6 +14,8 @@ public class GuiManager : MonoBehaviour
 
     //Settings of the grid
     public bool legal = true;
+    public bool legalRecheckAll = false;
+
     public Vector2Int lastCoordinate;
     public List<Vector2Int> lastColoredTiles = new List<Vector2Int>();
     public Player lastPlayer;
@@ -22,6 +24,7 @@ public class GuiManager : MonoBehaviour
     //Keep track of cells
     public GameObject ui_Grid;
     public GameObject ui_Cards;
+    public Text text_Victory;
     //public GameObject ui_Cards;
 
     public List<UICard> cardsInHand = new List<UICard>();
@@ -57,16 +60,16 @@ public class GuiManager : MonoBehaviour
         //Event call on hover on the cells
     }
 
-    public void ShowGrid()
+    public void ShowGrid(bool val = true)
     {
-        ui_Grid.SetActive(true);
-        ui_Cards.SetActive(false);
+        ui_Grid.SetActive(val);
+        //ui_Cards.SetActive(false);
     }
 
-    public void ShowCards()
+    public void ShowCards(bool val = true)
     {
-        ui_Grid.SetActive(false);
-        ui_Cards.SetActive(true);
+        //ui_Grid.SetActive(false);
+        ui_Cards.SetActive(val);
     }
 
     public void ColorTiles(Vector2Int coordinate)
@@ -75,19 +78,28 @@ public class GuiManager : MonoBehaviour
         lastCoordinate = coordinate;
         lastColoredTiles.Clear();
         ClearTiles();
+        legal = true;
+        legalRecheckAll = false;
 
         switch (GameManager.Instance.phase)
         {
             case GameManager.Phases.PlaceShips:
                 if (lastPlayer != null)
+                {
                     ShowPlayerShips(lastPlayer, Color.green);
+                    ShowPlayerAttackMarkers(lastPlayer, Color.black);
+                }
                 
                 PlaceShipColors(coordinate);
                 break;
 
-            case GameManager.Phases.Action:
-                legal = true;
-   
+            case GameManager.Phases.PlayerAction:
+                if (lastPlayer != null)
+                {
+                    ShowPlayerAttackMarkers(lastPlayer, Color.black);
+                }
+
+
                 ActionColors(coordinate);
                 break;
 
@@ -99,7 +111,13 @@ public class GuiManager : MonoBehaviour
     public void PlaceShipColors(Vector2Int coordinate)
     {
         //BASED ON SHIP ID INSTEAD!
-        int shipID = 0;//Get from current Player to place ships
+        Player player = GameManager.Instance.GetCurrentPlayer();
+        int shipID = player.selectedShip;//Get from current Player to place ships
+
+        ////Hardcoded Fix :(
+        //if (player.selectedShip >= player.ships.Count)
+        //    return;
+
         Ship ship = GameManager.Instance.shipDatabase.ships[shipID];
 
         //For each tile!
@@ -133,15 +151,33 @@ public class GuiManager : MonoBehaviour
             if (takenSpaceOffset.y >= GRID_SIZE_Y ||
                 takenSpaceOffset.x >= GRID_SIZE_X ||
                 takenSpaceOffset.y < 0 || takenSpaceOffset.x < 0)
+            {
+                legal = false;
                 continue;
+            }
 
-            grid[takenSpaceOffset.x, takenSpaceOffset.y].img.color = Color.green;
+            //Check if each space isn't on an occupied space!
+            //Check player's self view grid and see if there is anything already there
+            if (legal == true)
+                legal = CheckIfColliding(takenSpaceOffset);
+
+            else if (!legalRecheckAll)
+            {
+                legalRecheckAll = true;
+                i = 0;
+            }
+            
+
+            if (legal)
+                grid[takenSpaceOffset.x, takenSpaceOffset.y].img.color = Color.green;
+            else
+                grid[takenSpaceOffset.x, takenSpaceOffset.y].img.color = Color.red;
 
             lastColoredTiles.Add( new Vector2Int(takenSpaceOffset.x, takenSpaceOffset.y));
         }
 
         //If not colliding with anything or out of bounds then it is legal!
-        legal = true;
+        
     }
 
     public void ActionColors(Vector2Int coordinate)
@@ -182,7 +218,35 @@ public class GuiManager : MonoBehaviour
                 continue;
 
             grid[additiveDamagedArea.x, additiveDamagedArea.y].img.color = Color.red;
+
+            lastColoredTiles.Add(new Vector2Int(additiveDamagedArea.x, additiveDamagedArea.y));
         }
+    }
+
+    public bool CheckIfColliding(Vector2Int partOfShip)
+    {
+        int playerID = GameManager.Instance.currentPlayer;
+        Player player = GameManager.Instance.players[GameManager.Instance.currentPlayer];
+
+        //print(partOfShip);
+
+        for (int j = 0; j < player.ships.Count; j++)
+        {
+            for (int k = 0; k < player.ships[j].hitboxLocations.Count; k++)
+            {
+                //If colliding with an exisiting ship structure or out of bounds NOT LEGAL
+                if (player.ships[j].hitboxLocations[k] == partOfShip ||
+                    partOfShip.x < 0 ||
+                    partOfShip.y < 0 ||
+                    partOfShip.y >= 20 ||
+                    partOfShip.x >= 20)
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     public void ClearTiles()
@@ -214,6 +278,24 @@ public class GuiManager : MonoBehaviour
                 Vector2Int tile = hitboxLocations[j];
                 grid[tile.x, tile.y].img.color = color;
             }            
+        }
+    }
+
+    public void ShowPlayerAttackMarkers(Player player, Color color)
+    {
+        //Battleship.Grid attackGrid = player.enemyViewGrid;
+
+        //for (int i = 0; i < attackGrid.grid.GetLength(0); i++)
+        //    for (int j = 0; j < attackGrid.grid.GetLength(1); j++)
+        //    {
+        //        if (attackGrid.grid[i, j] == true)
+        //            grid[i, j].img.color = color;                
+        //    }
+
+        var attackGrid = player.attackGrid;
+        for (int i = 0; i < attackGrid.Count; i++)
+        {
+            grid[attackGrid[i].x, attackGrid[i].y].img.color = color;
         }
     }
 

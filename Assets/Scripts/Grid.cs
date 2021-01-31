@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 
 namespace Battleship
@@ -20,6 +21,13 @@ namespace Battleship
                     if (valGrid.grid[i, j] == true)
                         grid[i, j] = true;
                 }
+        }
+
+        public void AddGrid(List<Vector2Int> hitboxes)
+        {
+            for (int i = 0; i < hitboxes.Count; i++)          
+                grid[hitboxes[i].x, hitboxes[i].y] = true;
+                
         }
     }
 }

@@ -17,6 +17,12 @@ public class UICard : MonoBehaviour
         GameManager.Instance.SelectCard(cardID);
         GameManager.Instance.UIcard = this;
         GameManager.Instance.SwitchCameraMode(1);
+
+
+        //------ To refresh before on hover event
+        int playerID =  GameManager.Instance.currentPlayer;
+        Player player = GameManager.Instance.players[playerID];
+        GameManager.Instance.guiManager.ShowPlayerAttackMarkers(player, Color.black);
     }
 
     public void UpdateCard(int passedCardID)

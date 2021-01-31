@@ -37,6 +37,6 @@ public class Tile : MonoBehaviour, IPointerEnterHandler//, IPointerExitHandler
         //img.color = Color.red;
         GameManager.Instance.guiManager.ColorTiles(coordinate);
 
-        print(coordinate);
+        //print(coordinate);
     }
 }
