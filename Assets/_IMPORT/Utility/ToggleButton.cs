@@ -28,4 +28,10 @@ public class ToggleButton : MonoBehaviour {
             toggleType = true;
         }
     }
+
+    public void Off()
+    {
+        toggleType = false;
+        OnToggleOff.Invoke();
+    }
 }
